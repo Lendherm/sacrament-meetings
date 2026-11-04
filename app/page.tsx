@@ -6,17 +6,17 @@ export default function Home() {
     <main>
       <section className="relative min-h-[420px] overflow-hidden">
         <Image
-          src="/chapel.jpg"
-          alt="Sunlit chapel interior with wooden pews and tall windows"
+          src="/chapel.png"
+          alt="Latter-day Saint sacrament meeting in a chapel with congregation, pulpit, and sacrament table"
           width={1200}
           height={700}
           priority
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-slate-900/55" />
+        <div className="absolute inset-0 bg-[#002e5d]/65" />
         <div className="relative mx-auto flex min-h-[420px] max-w-5xl flex-col justify-center px-4 py-16 text-white">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-200">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#9ad0f5]">
             Sunrise Ward
           </p>
           <h1 className="max-w-2xl text-4xl font-bold sm:text-5xl">
