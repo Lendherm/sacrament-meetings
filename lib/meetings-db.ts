@@ -3,7 +3,7 @@ import type { SacramentMeeting } from "./types";
 const meetings: SacramentMeeting[] = [
   {
     id: 1,
-    date: "2026-10-05",
+    date: "2026-10-04",
     meetingType: "regular",
     presiding: "Bishop Luis Ramirez",
     conducting: "Brother Ethan Cole",
@@ -41,7 +41,7 @@ const meetings: SacramentMeeting[] = [
   },
   {
     id: 2,
-    date: "2026-10-12",
+    date: "2026-10-11",
     meetingType: "testimony",
     presiding: "Bishop Luis Ramirez",
     conducting: "Sister Elena Vargas",
@@ -63,7 +63,7 @@ const meetings: SacramentMeeting[] = [
   },
   {
     id: 3,
-    date: "2026-10-19",
+    date: "2026-10-18",
     meetingType: "regular",
     presiding: "Bishop Luis Ramirez",
     conducting: "Brother Ethan Cole",
@@ -99,7 +99,7 @@ const meetings: SacramentMeeting[] = [
   },
   {
     id: 4,
-    date: "2026-10-26",
+    date: "2026-10-25",
     meetingType: "stake",
     presiding: "Stake President Mark Jensen",
     conducting: "Stake President Mark Jensen",
@@ -133,7 +133,7 @@ const meetings: SacramentMeeting[] = [
   },
   {
     id: 5,
-    date: "2026-11-02",
+    date: "2026-11-01",
     meetingType: "general",
     presiding: "Bishop Luis Ramirez",
     conducting: "Bishop Luis Ramirez",
@@ -157,7 +157,7 @@ const meetings: SacramentMeeting[] = [
   },
   {
     id: 6,
-    date: "2026-11-09",
+    date: "2026-11-08",
     meetingType: "regular",
     presiding: "Bishop Luis Ramirez",
     conducting: "Sister Elena Vargas",
