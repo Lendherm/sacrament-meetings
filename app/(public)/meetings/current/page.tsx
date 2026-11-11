@@ -3,8 +3,8 @@ import { getCurrentSundayMeeting } from "@/lib/meetings-db";
 
 export const dynamic = "force-dynamic";
 
-export default function CurrentMeetingPage() {
-  const meeting = getCurrentSundayMeeting();
+export default async function CurrentMeetingPage() {
+  const meeting = await getCurrentSundayMeeting();
 
   if (!meeting) {
     redirect("/meetings");

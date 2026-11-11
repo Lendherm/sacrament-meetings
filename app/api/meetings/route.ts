@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getMeetings } from "@/lib/meetings-db";
+import { listMeetings } from "@/lib/meetings-db";
 import type { SacramentMeeting } from "@/lib/types";
 
 // GET /api/meetings
@@ -18,7 +18,7 @@ export async function GET(
       );
     }
 
-    const meetings = getMeetings(date);
+    const meetings = await listMeetings(date);
     return NextResponse.json(meetings);
   } catch {
     return NextResponse.json(
