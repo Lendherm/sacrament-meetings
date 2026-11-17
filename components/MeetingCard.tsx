@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DeleteMeetingButton from "@/components/DeleteMeetingButton";
 import type { SacramentMeeting } from "@/lib/types";
 import { formatDisplayDate, formatMeetingType } from "@/lib/format";
 
@@ -25,14 +26,21 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
       <p className="text-slate-700">
         <strong>Conducting:</strong> {meeting.conducting}
       </p>
-      <p className="mt-3">
+      <div className="mt-4 flex flex-wrap items-center gap-3">
         <Link
           href={`/meetings/${meeting.id}`}
           className="font-medium text-brand hover:underline"
         >
           View agenda
         </Link>
-      </p>
+        <Link
+          href={`/meetings/${meeting.id}/edit`}
+          className="rounded-md border border-brand/30 bg-brand/5 px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand/10"
+        >
+          Edit
+        </Link>
+        <DeleteMeetingButton id={meeting.id} />
+      </div>
     </article>
   );
 }

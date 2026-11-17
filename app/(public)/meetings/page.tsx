@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import MeetingCard from "@/components/MeetingCard";
 import { MeetingSearch } from "@/components/MeetingSearch";
@@ -20,7 +21,15 @@ export default async function MeetingsPage(props: {
 
   return (
     <main>
-      <h1 className="mb-2 text-3xl font-bold text-slate-900">Meetings</h1>
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-3xl font-bold text-slate-900">Meetings</h1>
+        <Link
+          href="/meetings/new"
+          className="rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand/90"
+        >
+          Create Meeting
+        </Link>
+      </div>
       <p className="mb-6 text-slate-700">
         Browse planned and past sacrament meeting agendas. Search and pagination
         are driven by the URL.
