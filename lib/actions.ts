@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 import {
   addMeeting,
   deleteMeeting as deleteMeetingFromDb,
@@ -10,6 +11,14 @@ import {
 } from "@/lib/meetings-db";
 import type { MeetingInput } from "@/lib/meetings-db";
 import type { MeetingType, SpeakerItem, WardBusinessItem } from "@/lib/types";
+
+async function requireBishopricSession() {
+  const session = await auth();
+  if (!session?.user) {
+    throw new Error("Not authenticated");
+  }
+  return session;
+}
 
 const MeetingFormSchema = z.object({
   date: z
@@ -169,6 +178,7 @@ export async function createMeeting(
   formData: FormData
 ): Promise<State> {
   void prevState;
+  await requireBishopricSession();
   const validated = readForm(formData);
   if (!validated.success) {
     return {
@@ -194,6 +204,7 @@ export async function updateMeeting(
   formData: FormData
 ): Promise<State> {
   void prevState;
+  await requireBishopricSession();
   const meetingId = Number(id);
   if (!Number.isInteger(meetingId) || meetingId < 1) {
     return { message: "Invalid meeting id." };
@@ -226,6 +237,7 @@ export async function updateMeeting(
 }
 
 export async function deleteMeeting(id: string) {
+  await requireBishopricSession();
   const meetingId = Number(id);
   if (!Number.isInteger(meetingId) || meetingId < 1) {
     throw new Error("Invalid meeting id.");

@@ -12,9 +12,26 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Sunrise Ward | Sacrament Meeting Planner",
+  metadataBase: new URL("https://sacrament-meetings-phi.vercel.app"),
+  title: {
+    default: "Sunrise Ward | Sacrament Meeting Planner",
+    template: "%s | Sunrise Ward Planner",
+  },
   description:
-    "Plan and review sacrament meeting agendas for bishoprics, branch leaders, and members.",
+    "Plan and review sacrament meeting agendas for bishoprics, branch leaders, and members of Sunrise Ward.",
+  openGraph: {
+    title: "Sunrise Ward | Sacrament Meeting Planner",
+    description:
+      "Plan and review sacrament meeting agendas for bishoprics and ward members.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sunrise Ward chapel",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

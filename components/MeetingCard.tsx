@@ -5,9 +5,13 @@ import { formatDisplayDate, formatMeetingType } from "@/lib/format";
 
 interface MeetingCardProps {
   meeting: SacramentMeeting;
+  canManage?: boolean;
 }
 
-export default function MeetingCard({ meeting }: MeetingCardProps) {
+export default function MeetingCard({
+  meeting,
+  canManage = false,
+}: MeetingCardProps) {
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand/40 hover:shadow-md">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -33,13 +37,17 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
         >
           View agenda
         </Link>
-        <Link
-          href={`/meetings/${meeting.id}/edit`}
-          className="rounded-md border border-brand/30 bg-brand/5 px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand/10"
-        >
-          Edit
-        </Link>
-        <DeleteMeetingButton id={meeting.id} />
+        {canManage ? (
+          <>
+            <Link
+              href={`/meetings/${meeting.id}/edit`}
+              className="rounded-md border border-brand/30 bg-brand/5 px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand/10"
+            >
+              Edit
+            </Link>
+            <DeleteMeetingButton id={meeting.id} />
+          </>
+        ) : null}
       </div>
     </article>
   );

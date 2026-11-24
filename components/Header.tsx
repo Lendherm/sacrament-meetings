@@ -1,4 +1,7 @@
+import Link from "next/link";
+import { auth } from "@/auth";
 import NavLinks from "@/components/NavLinks";
+import SignOutButton from "@/components/SignOutButton";
 
 function formatToday(date = new Date()): string {
   return date.toLocaleDateString("en-US", {
@@ -9,7 +12,8 @@ function formatToday(date = new Date()): string {
   });
 }
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
   const today = formatToday();
 
   return (
@@ -24,7 +28,22 @@ export default function Header() {
             <time dateTime={new Date().toISOString().slice(0, 10)}>{today}</time>
           </p>
         </div>
-        <NavLinks />
+        <div className="flex flex-wrap items-center gap-4">
+          <NavLinks />
+          {session?.user ? (
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-slate-600">{session.user.email}</span>
+              <SignOutButton />
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-md bg-brand px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand/90"
+            >
+              Sign in
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
